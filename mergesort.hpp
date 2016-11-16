@@ -33,8 +33,6 @@ namespace mns{
 	template<typename T>
 	void splitmerge(std::vector<T> * _temp_array, int start, int end, std::vector<T> * _array, bool (*func)(T,T), int threads){
 
-
-
 		if (end - start < 2) return;
 		int middle = (start + end)/2;
 
@@ -59,6 +57,7 @@ namespace mns{
 			threads --> 2^(threads) will be created
 			terrible name, more like depth_of_recursion_to_create_threads... well that's terrible as well
 		*/
+		
 		std::vector<T> * array, * temp_array;
 		int size;
 		array = _vector;
