@@ -9,6 +9,8 @@
 
 namespace mns{
 
+namespace mergesort{
+
 	template<typename T>
 	void copyarray(T * _src, int start, int end, T * _dst){
 		for(int i = start; i < end; i++) (*_dst)[i] = (*_src)[i];
@@ -57,7 +59,7 @@ namespace mns{
 			threads --> 2^(threads) will be created
 			terrible name, more like depth_of_recursion_to_create_threads... well that's terrible as well
 		*/
-		
+
 		std::vector<T> * array, * temp_array;
 		int size;
 		array = _vector;
@@ -68,4 +70,7 @@ namespace mns{
 		splitmerge(temp_array, 0, size, array, func, threads);
 	}
 }
+
+}
+
 #endif

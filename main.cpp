@@ -35,7 +35,7 @@ void test(std::vector<int> test_vector, int numbers, int threads, bool mine) {
 	std::cout << ((mine)?("Merge: "):("Quick: "));
 	std::cout << "Numbers: " << numbers << ", Threads: " << pow(2,threads) << " ... " << std::flush;
 	gettimeofday(&time_start, NULL);
-	if (true) mns::sort<int>(&test_vector, sortintdesc, threads);
+	if (true) mns::mergesort::sort<int>(&test_vector, sortintdesc, threads);
 	else std::sort(test_vector.begin(), test_vector.end());
 	gettimeofday(&time_stop, NULL);
 	std::cout << 1000 * (time_stop.tv_sec - time_start.tv_sec) + (time_stop.tv_usec - time_start.tv_usec) / 1000 << " msec" << std::endl;
@@ -58,16 +58,16 @@ int main(){
 	test_vector.push_back(9);
 	test_vector.push_back(21);
 
-	mns::sort<int>(&test_vector, sortintasc, 0);
+	mns::mergesort::sort<int>(&test_vector, sortintasc, 0);
 	for(int i =0; i< test_vector.size(); i++) std::cout << test_vector[i] << " " ;
 	std::cout << std::endl;
-	mns::sort<int>(&test_vector, sortintdesc, 0);
+	mns::mergesort::sort<int>(&test_vector, sortintdesc, 0);
 	for(int i =0; i< test_vector.size(); i++) std::cout << test_vector[i] << " " ;
 	std::cout << std::endl;
-	mns::sort<int>(&test_vector, [](int l,int r) -> bool {return l>r;}, 0);
+	mns::mergesort::sort<int>(&test_vector, [](int l,int r) -> bool {return l>r;}, 0);
 	for(int i =0; i< test_vector.size(); i++) std::cout << test_vector[i] << " " ;
 	std::cout << std::endl;
-	mns::sort<int>(&test_vector, [](int l,int r) -> bool {return l<r;}, 0);
+	mns::mergesort::sort<int>(&test_vector, [](int l,int r) -> bool {return l<r;}, 0);
 	for(int i =0; i< test_vector.size(); i++) std::cout << test_vector[i] << " " ;
 	std::cout << std::endl;
 
@@ -84,16 +84,16 @@ int main(){
 	test_vector2.push_back(new some_struct_type(245,"hellodarknessmyoldfri"));
 	test_vector2.push_back(new some_struct_type(223,"hellodarknessmyoldfriend"));
 
-	mns::sort<some_struct_type *>(&test_vector2, [](some_struct_type * l, some_struct_type * r) -> bool {return l->test_int < r->test_int;}, 0);
+	mns::mergesort::sort<some_struct_type *>(&test_vector2, [](some_struct_type * l, some_struct_type * r) -> bool {return l->test_int < r->test_int;}, 0);
 	for(int i =0; i< test_vector2.size(); i++) std::cout << (test_vector2[i])->test_int << " " ;
 	std::cout << std::endl;std::cout << std::endl;
-	mns::sort<some_struct_type *>(&test_vector2, [](some_struct_type * l, some_struct_type * r) -> bool {return l->test_str < r->test_str;}, 1);
+	mns::mergesort::sort<some_struct_type *>(&test_vector2, [](some_struct_type * l, some_struct_type * r) -> bool {return l->test_str < r->test_str;}, 1);
 	for(int i =0; i< test_vector2.size(); i++) std::cout << (test_vector2[i])->test_str << " " ;
 	std::cout << std::endl;std::cout << std::endl;
-	mns::sort<some_struct_type *>(&test_vector2, sortsomeotherstructstrasc, 0);
+	mns::mergesort::sort<some_struct_type *>(&test_vector2, sortsomeotherstructstrasc, 0);
 	for(int i =0; i< test_vector2.size(); i++) std::cout << (test_vector2[i])->test_str << " " ;
 	std::cout << std::endl;std::cout << std::endl;
-	mns::sort<some_struct_type *>(&test_vector2, sortsomeotherstructstrdesc, 1);
+	mns::mergesort::sort<some_struct_type *>(&test_vector2, sortsomeotherstructstrdesc, 1);
 	for(int i =0; i< test_vector2.size(); i++) std::cout << (test_vector2[i])->test_str << " " ;
 	std::cout << std::endl;std::cout << std::endl;
 
