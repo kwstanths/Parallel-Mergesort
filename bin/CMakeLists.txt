@@ -8,8 +8,8 @@ set(PROJECT_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/../)
 set(CMAKE_MODULE_PATH ${PROJECT_ROOT}/cmake/Modules/)
 
 set(myPMSort_ROOT /usr/local/myPMSort)
-find_package(myPMSort)
 find_package(Threads)
+find_package(myPMSort)
 
 file(GLOB ${NAME}_HEADERS *.hpp)
 file(GLOB ${NAME}_SOURCES *.cpp)
@@ -18,5 +18,7 @@ include_directories(${myPMSort_INCLUDE_DIRS})
 
 add_executable(${NAME} ${${NAME}_HEADERS} ${${NAME}_SOURCES})
 
-target_link_libraries(${NAME} pthread)
-target_link_libraries(${NAME} myPMSort)
+#target_link_libraries(${NAME} pthread)
+target_link_libraries(${NAME} ${myPMSort_LIBRARIES})
+target_link_libraries(${NAME} ${CMAKE_THREAD_LIBS_INIT})
+
