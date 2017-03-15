@@ -1,7 +1,7 @@
 # Parallel-Mergesort
 An implementation of a parallel mergesort
 
-#Build the library 
+# Build the library 
 mkdir build/release
 
 cd build/release
@@ -12,7 +12,7 @@ make
 
 sudo make install
 
-#Build bin
+# Build bin
 Change main CMakeLists.txt file to include bin directory
 
 cd build/release
@@ -21,6 +21,6 @@ cmake ../../
 
 make
 
-#Use the library
+# Use the library
 Add FindmyPMSort.cmake file to your CMake Module path,
 See bin/CMakeLists.txt to use in your CMake project
